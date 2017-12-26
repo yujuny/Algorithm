@@ -6,6 +6,7 @@
 
 * [选择排序](/selection.md)
 * [插入排序](/insertion.md)
+* [希尔排序](/shell.md)
 
 
 
