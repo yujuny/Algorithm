@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [selection](selection.md)
-* [insertion](insertion.md)
-* [shell](shell.md)
+* [selection](sort/selection.md)
+* [insertion](sort/insertion.md)
+* [shell](sort/shell.md)
 
