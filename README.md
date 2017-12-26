@@ -5,6 +5,7 @@
 # 目录
 
 * [选择排序](/selection.md)
+* [插入排序](/insertion.md)
 
 
 
