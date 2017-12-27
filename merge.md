@@ -58,6 +58,26 @@ private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int
 
 ![](/assets/merge_trace3.png)
 
+## 代码（自底向上）
+
+```
+public static void sort(Comparable[] a) {
+    int n = a.length;
+    Comparable[] aux = new Comparable[n];
+    for (int len = 1; len < n; len *= 2) {
+        for (int lo = 0; lo < n-len; lo += len+len) {
+            int mid  = lo+len-1;
+            int hi = Math.min(lo+len+len-1, n-1);
+            merge(a, aux, lo, mid, hi);
+        }
+    }
+}
+```
+
+## 轨迹图（自底向上）
+
+![](/assets/merge_trace4.png)
+
 # 复杂度
 
 对于长长度为N的数组，自顶向下的归并排序需要1/2NlgN至NlgN次比较。需要6NlgN次数组访问。
