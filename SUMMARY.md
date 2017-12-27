@@ -5,4 +5,5 @@
 * [insertion](sort/insertion.md)
 * [shell](sort/shell.md)
 * [merge](sort/merge.md)
+* [quick](sort/quick.md)
 
