@@ -6,7 +6,7 @@
 
 ### 基础
 
-* [二分查找](https://www.gitbook.com/book/jyy/blog/edit#)
+* [二分查找](/basic/binarysearch.md)
 
 ### 排序
 
