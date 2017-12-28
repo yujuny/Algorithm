@@ -24,9 +24,9 @@
 * 将4有序数组依次进行插入排序
 * 最后再进行一次插入排序
 
-![](/assets/shell_13sort.png)
+![](/assets/sort/shell_13sort.png)
 
-![](/assets/shell_4sort.png)
+![](/assets/sort/shell_4sort.png)
 
 ## 代码
 
@@ -52,7 +52,7 @@ public static void sort(Comparable[] a) {
 
 ## 轨迹图
 
-![](/assets/shell_trace.png)
+![](/assets/sort/shell_trace.png)
 
 # 复杂度
 

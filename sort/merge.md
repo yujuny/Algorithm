@@ -50,13 +50,13 @@ private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int
 
 归并的原理是从两个部分中找出最小的元素，存放到结果数组中。
 
-![](/assets/merge_trace1.png)
+![](/assets/sort/merge_trace1.png)
 
 下图展示了一次完整的归并排序过程
 
-![](/assets/merge_trace2.png)
+![](/assets/sort/merge_trace2.png)
 
-![](/assets/merge_trace3.png)
+![](/assets/sort/merge_trace3.png)
 
 ## 代码（自底向上）
 
@@ -76,7 +76,7 @@ public static void sort(Comparable[] a) {
 
 ## 轨迹图（自底向上）
 
-![](/assets/merge_trace4.png)
+![](/assets/sort/merge_trace4.png)
 
 # 复杂度
 

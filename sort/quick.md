@@ -10,7 +10,7 @@
 
 在快速排序中，切分数组的大致过程如下图所示。（将第一个元素插入合适位置，使其左边的元素均小于该元素，右边的元素均大于该元素）
 
-![](/assets/quick_cut.png)
+![](/assets/sort/quick_cut.png)
 
 ## 代码
 
@@ -55,13 +55,13 @@ private static int partition(Comparable[] a, int lo, int hi) {
 
 切分轨迹见下图
 
-![](/assets/quick_trace3.png)
+![](/assets/sort/quick_trace1.png)
 
-![](/assets/quick_trace1.png)
+![](/assets/sort/quick_trace3.png)
 
 完整的快速排序轨迹见下图
 
-![](/assets/quick_trace2.png)
+![](/assets/sort/quick_trace2.png)
 
 # 复杂度
 

@@ -21,7 +21,7 @@ public static void sort(Object[] a, Comparator comparator) {
 
 ## 轨迹图
 
-![](/assets/insertion_trace.png)
+![](/assets/sort/insertion_trace.png)
 
 # 复杂度
 

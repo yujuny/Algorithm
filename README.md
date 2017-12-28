@@ -4,6 +4,10 @@
 
 # 目录
 
+### 基础
+
+* [二分查找](https://www.gitbook.com/book/jyy/blog/edit#)
+
 ### 排序
 
 * [选择排序](/sort/selection.md)

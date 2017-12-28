@@ -23,7 +23,7 @@ public static void sort(Comparable[] a) {
 
 ## 轨迹图
 
-![](/assets/selection_trace.png)
+![](/assets/sort/selection_trace.png)
 
 # 复杂度
 
