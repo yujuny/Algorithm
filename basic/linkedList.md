@@ -19,19 +19,19 @@ private class Node {
 
 #### 构建
 
-![](/assets/linkedList_p1.png)
+![](/assets/basic/linkedList_p1.png)
 
 #### 在表头插入节点
 
-![](/assets/linkedList_p2.png)
+![](/assets/basic/linkedList_p2.png)
 
 #### 从表头删除节点
 
-![](/assets/linkedList_p3.png)
+![](/assets/basic/linkedList_p3.png)
 
 #### 在表尾插入节点
 
-![](/assets/linkedList_p4.png)
+![](/assets/basic/linkedList_p4.png)
 
 其它操作比如删除某个节点、在某个节点前插入一个节点，就不是那么容易了，需要遍历整个链表，需要消耗的时间与链表的长度成正比。利用双向链表可以解决这个问题。
 
@@ -53,7 +53,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         pre.next = post;
         post.prev = pre;
     }
-    
+
     // linked list node helper data type
     private class Node {
         private Item item;
@@ -75,9 +75,9 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         last.next = x;
         n++;
     }
-    
+
     ......
-    
+
 ｝
 ```
 
