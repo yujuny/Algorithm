@@ -3,6 +3,8 @@
 * [目录](README.md)
 * [基础](basic.md)
   * [二分查找](basic/binarysearch.md)
+  * [链表](basic/linkedList.md)
+  * [背包](basic/bag.md)
 * [排序](sort.md)
   * [选择排序](sort/selection.md)
   * [插入排序](sort/insertion.md)
