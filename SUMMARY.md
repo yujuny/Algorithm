@@ -1,9 +1,9 @@
 # Summary
 
-* [Introduction](README.md)
-* [selection](sort/selection.md)
-* [insertion](sort/insertion.md)
-* [shell](sort/shell.md)
-* [merge](sort/merge.md)
-* [quick](sort/quick.md)
+* [目录](README.md)
+* [选择排序](sort/selection.md)
+* [插入排序](sort/insertion.md)
+* [希尔排序](sort/shell.md)
+* [归并排序](sort/merge.md)
+* [快速排序](sort/quick.md)
 
