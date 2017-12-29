@@ -53,13 +53,13 @@ private static int partition(Comparable[] a, int lo, int hi) {
 
 ## 轨迹图
 
-切分轨迹见下图
+**切分轨迹：**
 
 ![](/assets/sort/quick_trace1.png)
 
 ![](/assets/sort/quick_trace3.png)
 
-完整的快速排序轨迹见下图
+**完整的快速排序轨迹：**
 
 ![](/assets/sort/quick_trace2.png)
 
