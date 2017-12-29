@@ -12,7 +12,7 @@
 
 ## 实现
 
-#### 定容栈
+### 定容栈
 
 一个用数组实现的固定容量的栈，必须事先知道最大容量，并且入栈的元素数量不能超过最大容量。
 
@@ -62,7 +62,7 @@ public class FixedCapacityStack<Item> implements Iterable<Item> {
 1. 大小无法改变，且有最大容量限制。
 2. 在栈为空或者几乎为空时，浪费大量内存。
 
-#### 动态调整数组大小的栈
+### 动态调整数组大小的栈
 
 能根据实际数据大小动态修改数组大小的栈。
 
@@ -152,7 +152,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 
 ![](/assets/basic/stack_trace2.png)
 
-#### 用链表实现栈：
+### 用链表实现栈：
 
 ```
 public class Stack<Item> implements Iterable<Item> {
