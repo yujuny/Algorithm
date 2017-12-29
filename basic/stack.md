@@ -236,5 +236,9 @@ public class Stack<Item> implements Iterable<Item> {
 }
 ```
 
+**轨迹图：**
 
+![](/assets/basic/stack_trace3.png)
+
+![](/assets/basic/stack_trace4.png)
 
