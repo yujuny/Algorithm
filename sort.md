@@ -5,6 +5,9 @@
 * [希尔排序](/sort/shell.md)
 * [归并排序](/sort/merge.md)
 * [快速排序](/sort/quick.md)
+* [优先队列](/sort/maxpq.md)
+* [堆](/sort/heap.md)
+* [堆排序](/sort/heapsort.md)
 
 
 
