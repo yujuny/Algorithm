@@ -16,4 +16,5 @@
   * [优先队列](sort/maxpq.md)
   * [堆](sort/heap.md)
   * [堆排序](sort/heapsort.md)
+  * [各种排序算法的比较](sort/sortcomparison.md)
 

@@ -82,7 +82,7 @@ public class OrderedArrayMaxPQ<Key extends Comparable<Key>> {
         pq[i+1] = key;
         n++;
     }
-    
+
     private boolean less(Key v, Key w) {
         return v.compareTo(w) < 0;
     }
@@ -93,7 +93,5 @@ public class OrderedArrayMaxPQ<Key extends Comparable<Key>> {
 
 ## 轨迹图
 
-![](/assets/maxPQ_trace1.png)
-
-
+![](/assets/sort/maxPQ_trace1.png)
 
