@@ -17,4 +17,6 @@
   * [堆](sort/heap.md)
   * [堆排序](sort/heapsort.md)
   * [各种排序算法的比较](sort/sortcomparison.md)
+* [查找](searching.md)
+  * [符号表](searching/symboltable.md)
 
