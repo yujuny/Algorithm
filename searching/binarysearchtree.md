@@ -209,5 +209,121 @@ private Node select(Node x, int k) {
 
 #### 排名
 
+如果给定的键和根结点的键相等，就返回左子树中的节点总数t；如果给定的键小于根结点，就返回该键在左子树中的排名；如果给定的键大于根结点，就返回t+1加上他在右子树中的排名。
+
+**代码**
+
+```
+public int rank(Key key) {
+    if (key == null) throw new IllegalArgumentException("argument to rank() is null");
+    return rank(key, root);
+} 
+
+private int rank(Key key, Node x) {
+    if (x == null) return 0; 
+    int cmp = key.compareTo(x.key); 
+    if      (cmp < 0) return rank(key, x.left); 
+    else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right); 
+    else              return size(x.left); 
+}
+```
+
+#### 删除最大键和删除最小键
+
+删除最小键（deleteMin）时，需要不断地深入根结点的左子树中直至遇见一个空连接，然后将指向该结点的链接指向该节点的右子树。
+
+删除最大键与其类似。
+
+**代码**
+
+```
+public void deleteMin() {
+    if (isEmpty()) throw new NoSuchElementException("Symbol table underflow");
+    root = deleteMin(root);
+}
+
+private Node deleteMin(Node x) {
+    if (x.left == null) return x.right;
+    x.left = deleteMin(x.left);
+    x.size = size(x.left) + size(x.right) + 1;
+    return x;
+}
+```
+
+**轨迹图**
+
+![](/assets/searching/binarySearchTree_trace5.png)
+
+#### 删除
+
+在删除结点后用它的后继节点填补它的位置。简单步骤如下：
+
+1. 将指向即将被删除的结点的链接保存为t
+2. 将x指向它的后继结点min\(t.right\)
+3. 将x的右链接指向deleteMin\(t.right\)
+4. 将x的左链接设为t.left
+
+**轨迹图**
+
+![](/assets/searching/binarySearchTree_trace6.png)
+
+**代码**
+
+```
+public void delete(Key key) {
+    if (key == null) throw new IllegalArgumentException("calls delete() with a null key");
+    root = delete(root, key);
+}
+
+private Node delete(Node x, Key key) {
+    if (x == null) return null;
+
+    int cmp = key.compareTo(x.key);
+    if      (cmp < 0) x.left  = delete(x.left,  key);
+    else if (cmp > 0) x.right = delete(x.right, key);
+    else { 
+        if (x.right == null) return x.left;
+        if (x.left  == null) return x.right;
+        Node t = x;
+        x = min(t.right);
+        x.right = deleteMin(t.right);
+        x.left = t.left;
+    } 
+    x.size = size(x.left) + size(x.right) + 1;
+    return x;
+}
+```
+
+#### 范围查找
+
+```
+public Iterable<Key> keys() {
+    if (isEmpty()) return new Queue<Key>();
+    return keys(min(), max());
+}
+
+public Iterable<Key> keys(Key lo, Key hi) {
+    if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
+    if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
+
+    Queue<Key> queue = new Queue<Key>();
+    keys(root, queue, lo, hi);
+    return queue;
+} 
+
+private void keys(Node x, Queue<Key> queue, Key lo, Key hi) { 
+    if (x == null) return; 
+    int cmplo = lo.compareTo(x.key); 
+    int cmphi = hi.compareTo(x.key); 
+    if (cmplo < 0) keys(x.left, queue, lo, hi); 
+    if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key); 
+    if (cmphi > 0) keys(x.right, queue, lo, hi); 
+}
+```
+
+## 成本总结
+
+![](/assets/searching/binarySearchTree_compare.png)
+
 
 
