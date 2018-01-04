@@ -122,7 +122,7 @@ public Key max() {
 private Node max(Node x) {
     if (x.right == null) return x; 
     else                 return max(x.right); 
-} 
+}
 ```
 
 #### 向上取整和向下取整
@@ -172,7 +172,7 @@ private Node ceiling(Node x, Key key) {
         else return x; 
     } 
     return ceiling(x.right, key); 
-} 
+}
 ```
 
 **轨迹图**
@@ -200,7 +200,7 @@ private Node select(Node x, int k) {
     if      (t > k) return select(x.left,  k); 
     else if (t < k) return select(x.right, k-t-1); 
     else            return x; 
-} 
+}
 ```
 
 **轨迹图**
@@ -208,8 +208,6 @@ private Node select(Node x, int k) {
 ![](/assets/searching/binarySearchTree_trace4.png)
 
 #### 排名
-
-
 
 
 
