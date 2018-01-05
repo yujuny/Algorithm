@@ -20,5 +20,6 @@
 * [查找](searching.md)
   * [符号表](searching/symboltable.md)
   * [二叉查找树](searching/binarysearchtree.md)
-  * [平衡查找树](searching/balancedsearchtree.md)
+  * [平衡查找树之2-3查找树](searching/balancedsearchtree.md)
+  * [平衡查找树之红黑二叉查找树](searching/redblackbst.md)
 
