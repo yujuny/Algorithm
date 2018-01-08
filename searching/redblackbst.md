@@ -88,5 +88,53 @@ private boolean isRed(Node x) {
 
 ![](/assets/searching/rebBlackBST_trace3.png)
 
+## 颜色转换
 
+将两个子结点的颜色由红变黑，将父结点的颜色由黒变红。
+
+![](/assets/searching/redBlackBST_trace3.png)
+
+## 向树底部的3-结点插入新键
+
+![](/assets/searching/redBlackBST_trace4.png)
+
+![](/assets/searching/redBlackBST_trace5.png)
+
+## 实现
+
+#### 代码
+
+```
+public void put(Key key, Value val) {
+    if (key == null) throw new IllegalArgumentException("first argument to put() is null");
+    if (val == null) {
+        delete(key);
+        return;
+    }
+
+    root = put(root, key, val);
+    root.color = BLACK;
+}
+
+private Node put(Node h, Key key, Value val) { 
+    if (h == null) return new Node(key, val, RED, 1);
+
+    int cmp = key.compareTo(h.key);
+    if      (cmp < 0) h.left  = put(h.left,  key, val); 
+    else if (cmp > 0) h.right = put(h.right, key, val); 
+    else              h.val   = val;
+
+    // fix-up any right-leaning links
+    if (isRed(h.right) && !isRed(h.left))      h = rotateLeft(h);
+    if (isRed(h.left)  &&  isRed(h.left.left)) h = rotateRight(h);
+    if (isRed(h.left)  &&  isRed(h.right))     flipColors(h);
+    h.size = size(h.left) + size(h.right) + 1;
+
+    return h;
+}
+```
+
+#### 轨迹图
+
+![](/assets/searching/redBlackBST_trace6.png)
 
