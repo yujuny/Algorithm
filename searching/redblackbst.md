@@ -138,3 +138,11 @@ private Node put(Node h, Key key, Value val) {
 
 ![](/assets/searching/redBlackBST_trace6.png)
 
+## 复杂度
+
+一棵大小为N的红黑树的高度不会超过2logN。
+
+一棵大小为N的红黑树中，根结点到任意结点的平均路径长度为~1.00logN。
+
+![](/assets/searching/redBlackBST_compare.png)
+
