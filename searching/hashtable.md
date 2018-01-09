@@ -67,7 +67,7 @@ public class Transaction {
     private final String  who;      // customer
     private final Date    when;     // date
     private final double  amount;   // amount
-    
+
     public int hashCode() {
         int hash = 1;
         hash = 31*hash + who.hashCode();
@@ -102,7 +102,7 @@ public class SeparateChainingHashST<Key, Value> {
         for (int i = 0; i < m; i++)
             st[i] = new SequentialSearchST<Key, Value>();
     } 
-    
+
     private void resize(int chains) {
         SeparateChainingHashST<Key, Value> temp = new SeparateChainingHashST<Key, Value>(chains);
         for (int i = 0; i < m; i++) {
@@ -114,11 +114,11 @@ public class SeparateChainingHashST<Key, Value> {
         this.n  = temp.n;
         this.st = temp.st;
     }
-    
+
     private int hash(Key key) {
         return (key.hashCode() & 0x7fffffff) % m;
     } 
-    
+
     public Value get(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to get() is null");
         int i = hash(key);
@@ -139,7 +139,7 @@ public class SeparateChainingHashST<Key, Value> {
         if (!st[i].contains(key)) n++;
         st[i].put(key, val);
     } 
-    
+
     public void delete(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
 
@@ -162,5 +162,145 @@ public class SeparateChainingHashST<Key, Value> {
 }
 ```
 
+#### 轨迹图
 
+![](/assets/searching/hashTable_trace1.png)
+
+#### 复杂度
+
+在一张含有M条链表和N个键的散列表中，未命中查找和插入操作所需的比较次数为~N/M。
+
+## 基于线性探测法的散列表
+
+实现散列表的另一种方式就是用大小为M的数组保存N个键值对，其中M&gt;N。我们需要依靠数组中的空位解决碰撞冲突。基于这种策略的所有方法被统称为开放地址散列表。
+
+开放地址散列表中最简单的方法叫做线性探测法：当碰撞发生时，我们直接检查散列表中下一个位置。
+
+#### 代码
+
+```
+public class LinearProbingHashST<Key, Value> {
+    private static final int INIT_CAPACITY = 4;
+
+    private int n;           // number of key-value pairs in the symbol table
+    private int m;           // size of linear probing table
+    private Key[] keys;      // the keys
+    private Value[] vals;    // the values
+
+    public LinearProbingHashST() {
+        this(INIT_CAPACITY);
+    }
+
+    public LinearProbingHashST(int capacity) {
+        m = capacity;
+        n = 0;
+        keys = (Key[])   new Object[m];
+        vals = (Value[]) new Object[m];
+    }
+
+    public int size() {
+        return n;
+    }
+
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    public boolean contains(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to contains() is null");
+        return get(key) != null;
+    }
+
+    private int hash(Key key) {
+        return (key.hashCode() & 0x7fffffff) % m;
+    }
+
+    private void resize(int capacity) {
+        LinearProbingHashST<Key, Value> temp = new LinearProbingHashST<Key, Value>(capacity);
+        for (int i = 0; i < m; i++) {
+            if (keys[i] != null) {
+                temp.put(keys[i], vals[i]);
+            }
+        }
+        keys = temp.keys;
+        vals = temp.vals;
+        m    = temp.m;
+    }
+
+    public void put(Key key, Value val) {
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
+
+        if (val == null) {
+            delete(key);
+            return;
+        }
+
+        // double table size if 50% full
+        if (n >= m/2) resize(2*m);
+
+        int i;
+        for (i = hash(key); keys[i] != null; i = (i + 1) % m) {
+            if (keys[i].equals(key)) {
+                vals[i] = val;
+                return;
+            }
+        }
+        keys[i] = key;
+        vals[i] = val;
+        n++;
+    }
+
+    public Value get(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
+        for (int i = hash(key); keys[i] != null; i = (i + 1) % m)
+            if (keys[i].equals(key))
+                return vals[i];
+        return null;
+    }
+
+    public void delete(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
+        if (!contains(key)) return;
+
+        // find position i of key
+        int i = hash(key);
+        while (!key.equals(keys[i])) {
+            i = (i + 1) % m;
+        }
+
+        // delete key and associated value
+        keys[i] = null;
+        vals[i] = null;
+
+        // rehash all keys in same cluster
+        i = (i + 1) % m;
+        while (keys[i] != null) {
+            // delete keys[i] an vals[i] and reinsert
+            Key   keyToRehash = keys[i];
+            Value valToRehash = vals[i];
+            keys[i] = null;
+            vals[i] = null;
+            n--;
+            put(keyToRehash, valToRehash);
+            i = (i + 1) % m;
+        }
+
+        n--;
+
+        // halves size of array if it's 12.5% full or less
+        if (n > 0 && n <= m/8) resize(m/2);
+    }
+
+    public Iterable<Key> keys() {
+        Queue<Key> queue = new Queue<Key>();
+        for (int i = 0; i < m; i++)
+            if (keys[i] != null) queue.enqueue(keys[i]);
+        return queue;
+    }
+}
+```
+
+#### 轨迹图
+
+![](/assets/searching/hashTable_trace2.png)
 
