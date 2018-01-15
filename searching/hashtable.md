@@ -304,3 +304,9 @@ public class LinearProbingHashST<Key, Value> {
 
 ![](/assets/searching/hashTable_trace2.png)
 
+#### 复杂度
+
+能够动态调整数组大小的散列表，执行任意顺序的t次查找、插入和删除所需时间和t成正比，所使用的内存量总是在表中的键的总数的常数因子范围内。
+
+![](/assets/searching/hashTable_compare.png)
+
