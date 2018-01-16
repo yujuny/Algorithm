@@ -25,4 +25,5 @@
   * [散列表](searching/hashtable.md)
 * [图](graph.md)
   * [无向图](graph/undirectedgraph.md)
+  * [深度优先搜索](graph/depthfirstsearch.md)
 
