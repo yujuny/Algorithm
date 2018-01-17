@@ -11,7 +11,7 @@
 
 ## 接口
 
-![](/assets/graph/depthFirstSearch_interface.png)
+![](/assets/graph/depthFirstSearch_interface1.png)
 
 ## 代码
 
@@ -52,6 +52,81 @@ public class DepthFirstSearch {
     }
 }
 ```
+
+## 轨迹图
+
+![](/assets/graph/depthFirstSearch_trace1.png)
+
+# 寻找路径
+
+---
+
+# 定义
+
+给定一幅图和一个起点S，找到从S到给定目的顶点V的路径。
+
+## 接口
+
+![](/assets/graph/depthFirstSearch_interface2.png)
+
+## 代码
+
+```
+public class DepthFirstPaths {
+    private boolean[] marked;    // marked[v] = is there an s-v path?
+    private int[] edgeTo;        // edgeTo[v] = last edge on s-v path
+    private final int s;         // source vertex
+
+    public DepthFirstPaths(Graph G, int s) {
+        this.s = s;
+        edgeTo = new int[G.V()];
+        marked = new boolean[G.V()];
+        validateVertex(s);
+        dfs(G, s);
+    }
+
+    private void dfs(Graph G, int v) {
+        marked[v] = true;
+        for (int w : G.adj(v)) {
+            if (!marked[w]) {
+                edgeTo[w] = v;
+                dfs(G, w);
+            }
+        }
+    }
+
+    public boolean hasPathTo(int v) {
+        validateVertex(v);
+        return marked[v];
+    }
+
+    public Iterable<Integer> pathTo(int v) {
+        validateVertex(v);
+        if (!hasPathTo(v)) return null;
+        Stack<Integer> path = new Stack<Integer>();
+        for (int x = v; x != s; x = edgeTo[x])
+            path.push(x);
+        path.push(s);
+        return path;
+    }
+
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+}
+```
+
+## 轨迹图
+
+![](/assets/graph/depthFirstSearch_trace2.png)
+
+![](/assets/graph/depthFirstSearch_trace3.png)
+
+## 复杂度
+
+使用深度优先搜索得到从给定起点到任意顶点的路径所需的时间与路径的长度成正比。
 
 
 
