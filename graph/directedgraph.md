@@ -98,10 +98,6 @@ public class Digraph {
 }
 ```
 
-
-
-
-
 # 可达性
 
 ---
@@ -157,5 +153,9 @@ public class DirectedDFS {
 
 ![](/assets/graph/directedGraph_trace3.png)
 
+## 应用
 
+java垃圾回收机制。周期性地运行一个类似DirectedDFS 的有向图可达性算法来标记所有可以被访问到的对象，然后回收没有被标记的对象。
+
+![](/assets/graph/directedGraph_application.png)
 
