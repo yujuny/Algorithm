@@ -93,7 +93,6 @@ private static void sort(Comparable[] a, int lo, int hi) {
     // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
     sort(a, lo, lt-1);
     sort(a, gt+1, hi);
-    assert isSorted(a, lo, hi);
 }
 ```
 

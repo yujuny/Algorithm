@@ -80,5 +80,5 @@ public static void sort(Comparable[] a) {
 
 # 复杂度
 
-对于长长度为N的数组，自顶向下的归并排序需要1/2NlgN至NlgN次比较。需要6NlgN次数组访问。
+对于长长度为N的数组，自顶向下的归并排序需要**1/2NlogN至NlogN次比较**。需要6NlgN次数组访问。
 

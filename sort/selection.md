@@ -27,5 +27,5 @@ public static void sort(Comparable[] a) {
 
 # 复杂度
 
-对于长度为N的数组，选择排序需要大约N²/2次比较和N次交换。
+对于长度为N的数组，选择排序需要大约**N²/2次比较和N次交换**。
 
