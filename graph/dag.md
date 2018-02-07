@@ -136,7 +136,7 @@ public class DepthFirstOrder {
         postorder.enqueue(v);
         post[v] = postCounter++;
     }
- 
+
     public int pre(int v) {
         return pre[v];
     }
@@ -192,8 +192,6 @@ public class Topological {
 ![](/assets/graph/dag_trace3.png)
 
 ![](/assets/graph/dag_trace4.png)
-
-## 有向图中的强连通性
 
 
 
